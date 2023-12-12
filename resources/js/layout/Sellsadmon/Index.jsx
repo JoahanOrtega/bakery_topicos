@@ -89,7 +89,7 @@ function indexSell() {
                                                 Id del Comprador
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-left">
-                                                Id del carro
+                                                Id del postre
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-left">
                                                 Monto
@@ -101,7 +101,7 @@ function indexSell() {
                                             <tr key={`${venta.id}-${venta.id_usuario_fk}`}>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.id}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.Id_foreign_key}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.Id_foreign_keycars}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.Id_foreign_keycakes}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.amount}</td>
                                             </tr>
                                         ))}

@@ -113,7 +113,7 @@ function CreateCakes() {
 
                         <div className="mt-4 mb-4" >
                             <InputLabel htmlFor="stock" value="Stock disponible" />
-                            <TextInput min="0" value={formValue.stock} onChange={onChange} id="stock" type="number" name="stock" className="mt-1 block w-full p-2 border border-black" required />
+                            <TextInput min="1" value={formValue.stock} onChange={onChange} id="stock" type="number" name="stock" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
 
                         <div className="mt-4 mb-4" >
@@ -135,7 +135,7 @@ function CreateCakes() {
 
                         <div className="mt-4 mb-4" >
                             <InputLabel htmlFor="price" value="Precio del pastel" />
-                            <TextInput min="0" value={formValue.price} onChange={onChange} id="price" type="number" name="price" className="mt-1 block w-full p-2 border border-black" required />
+                            <TextInput min="1" value={formValue.price} onChange={onChange} id="price" type="number" name="price" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
 
 

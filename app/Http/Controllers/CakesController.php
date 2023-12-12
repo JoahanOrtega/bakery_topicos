@@ -97,7 +97,7 @@ class CakesController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'stock' => 'required|numeric|min:0',
+            'stock' => 'required|numeric|min:1',
             'type' => 'required|min:4|max:25',
             'size' => 'required',
             'flavors' => 'required',
@@ -153,7 +153,14 @@ class CakesController extends Controller
         if ($request->hasFile('Image')) {
             $imagePath = $request->file('Image')->store('Images', 'public');
         }
-        $cake->Available = 0;
+        if ($cake->stock >= 1) {
+            $cake->stock -= 1;
+            $cake->Available = 1;
+        }
+        if ($cake->stock < 1) {
+            $cake->Available = 0;
+        }
+
         $cake->save();
 
         return response()->json(['message' => 'Pastel actualizado correctamente']);

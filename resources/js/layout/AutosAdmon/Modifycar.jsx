@@ -51,26 +51,32 @@ const ModifyCar = () => {
 
         console.log('lo que estoy guardando en la imagen x2 ' + e.target.elements.Image.files[0]);
 
-        const response = await axios.post(`http://localhost/bakery_topicos/public/api/Updatecake/${cake.id}`,
-            formData,
-            {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    Accept: "application/json",
-                    'Authorization': `Bearer ${token}`
+        try {
+            const response = await axios.post(`http://localhost/bakery_topicos/public/api/Updatecake/${cake.id}`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        Accept: "application/json",
+                        'Authorization': `Bearer ${token}`
+                    }
+
                 }
-
-            }
-        );
-
-        // Add a console log to see the response object before the if statement
-        console.log(response);
-
-        if (response.status === 200) {
-            console.log("Registration successful!");
+            );
+            console.log("Registration successful!", response.data);
             navigate("/CakesAdmon");//desde el nombre
-        } else {
-            console.log("Error during registration: ", response.data.message);
+        } catch (error) {
+            if (error.response) {
+                // El servidor respondió con un estado fuera del rango de 2xx
+                console.log("Error en la respuesta del servidor: ", error.response.data);
+                alert("Error: " + error.response.data.message);
+            } else if (error.request) {
+                // La solicitud fue hecha pero no se recibió respuesta
+                console.log("La solicitud fue hecha pero no se recibió respuesta", error.request);
+            } else {
+                // Algo sucedió al configurar la petición que generó un Error
+                console.log('Error', error.message);
+            }
         }
     };
 
@@ -108,7 +114,7 @@ const ModifyCar = () => {
 
                         <div className="mt-4 mb-4" >
                             <InputLabel htmlFor="stock" value="Stock del producto" />
-                            <TextInput value={formValue.stock} onChange={onChange} id="stock" type="number" name="stock" className="mt-1 block w-full p-2 border border-black" required />
+                            <TextInput min="1" value={formValue.stock} onChange={onChange} id="stock" type="number" name="stock" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
 
                         <div className="mt-4 mb-4" >

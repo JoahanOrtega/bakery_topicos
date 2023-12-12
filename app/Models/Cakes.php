@@ -14,7 +14,7 @@ class Cakes extends Model
 
     public function Sale(): HasMany
     {
-        return $this->hasMany(Sale::class);
+        return $this->hasMany(Sale::class, 'Id_foreign_keycakes', 'id');
     }
 
     public function Ingredients(): BelongsTo
