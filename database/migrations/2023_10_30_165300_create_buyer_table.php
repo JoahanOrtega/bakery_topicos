@@ -17,11 +17,8 @@ return new class extends Migration
             $table->bigInteger('phone_number');
             $table->string('street');
             $table->string('House_number');
-            $table->string('name');
-            $table->string('Surname');
-            $table->string('second_surname');
             $table->timestamps();
-
+            
             $table->foreign('id_user')->references('id')->on('users');
             
         });

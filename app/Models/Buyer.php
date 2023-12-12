@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Buyer extends Model
 {
 
-/**
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -23,11 +23,8 @@ class Buyer extends Model
     }
     protected $fillable = [
         'phone_number',
-            'street',
-            'House_number',
-            'name',
-            'Surname',//primer apellido
-            'second_surname',
-            'id_user',
+        'street',
+        'House_number',
+        'id_user',
     ];
 }

@@ -11,7 +11,7 @@ class Sale extends Model
     protected $table = "Sale";
     protected $fillable=[
         'Id_foreign_key',
-        'Id_foreign_keycars',
+        'Id_foreign_keycackes',
         'amount'
 
     ];
@@ -22,7 +22,7 @@ class Sale extends Model
     }
     public function Auto(): BelongsTo
     {
-        return $this->belongsTo(Cars::class);
+        return $this->belongsTo(Cackes::class);
     }
 }
 

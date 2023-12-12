@@ -3,24 +3,24 @@ import axios from 'axios';
 import Cards from './Cards';
 
 function ListCards() {
-    const [carData, setCarData] = useState([]);
+    const [cackeData, setCackeData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedTransmission, setSelectedTransmission] = useState('');
+    const [selectedType, setSelectedType] = useState('');
 
     useEffect(() => {
-        const getCars = async () => {
-            await axios.get('http://localhost/bakery_topicos/public/api/Car_index')
+        const getCackes = async () => {
+            await axios.get('http://localhost/bakery_topicos/public/api/cake_index')
                 .then(function (response) {
                     console.log(response);
                     console.log('API Response:', response.data);
-                    setCarData(response.data);
+                    setCackeData(response.data);
                 })
                 .catch(function (error) {
                     console.log(error);
                     console.error('API Error:', error);
                 });
         }
-        getCars();
+        getCackes();
     }, []);
 
     const handleSearchChange = (event) => {
@@ -28,37 +28,38 @@ function ListCards() {
     };
 
 
-    const filteredCars = carData.filter(car =>
-        car.Model.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedTransmission === '' || car.TM === selectedTransmission)
+    const filteredCackes = cackeData.filter(cacke =>
+        cacke.Model.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedType === '' || cacke.type === selectedType)
     );
-    const handleTransmissionChange = (event) => {
-        setSelectedTransmission(event.target.value);
+    const handleTypeChange = (event) => {
+        setSelectedType(event.target.value);
     };
 
 
-    console.log('Selected Transmission:', selectedTransmission);
+    console.log('Selected type:', selectedType);
 
-    carData.forEach(car => {
-        console.log('Car TM:', car.TM);
+    cackeData.forEach(cacke => {
+        console.log('cacke type:', cacke.type);
     });
 
 
     return (
         <>
             <div className='container'>
-                <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Buscar por modelo..." className="mt-1 block p-2 border border-black" />
+                <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Buscar por tipo..." className="mt-1 block p-2 border border-black" />
                 <div className="relative inline-block text-left">
                     <select
                         className="mt-1 block p-2 border border-black w-40"
-                        name="transmission"
-                        id="transmission"
-                        value={selectedTransmission}
-                        onChange={handleTransmissionChange}
+                        name="type"
+                        id="type"
+                        value={selectedType}
+                        onChange={handleTypeChange}
                     >
-                        <option value="">Tipos de Transmisión</option>
-                        <option value="Manual">Manual</option>
-                        <option value="Automático">Automático</option>
+                        <option value="">Tipos de postres</option>
+                        <option value="Pastel">Pastel</option>
+                        <option value="Gelatina">Gelatina</option>
+                        <option value="Cupcacke">Cupcacke</option>
                     </select>
 
 
@@ -66,27 +67,23 @@ function ListCards() {
 
 
                 <div className='flex flex-wrap justify-around'>
-                    {filteredCars.length ? (
-                        filteredCars.map((car) => (
+                    {filteredCackes.length ? (
+                        filteredCackes.map((cacke) => (
                             <Cards
-                                key={car.id}
-                                id={car.id}
-                                model={car.Model}
-                                year={car.year}
-                                colour={car.Colour}
-                                type={car.type}
-                                fuel={car.fuel}
-                                disponibility={car.Available}
-                                image={car.Image}
-                                Km={car.Km}
-                                version={car.version}
-                                TM={car.TM}
-                                liters={car.liters}
-                                price={car.price}
+                                key={cacke.id}
+                                id={cacke.id}
+                                name={cacke.name}
+                                stock={cacke.stock}
+                                type={cacke.type}
+                                size={cacke.size}
+                                disponibility={cacke.Available}
+                                image={cacke.Image}
+                                flavors={cacke.flavors}
+                                price={cacke.price}
                             />
                         ))
                     ) : (
-                        <span className="visually-hidden">Loading...</span>
+                        <span className="visually-hidden">Parece que no hay pasteles</span>
                     )}
                 </div>
             </div>

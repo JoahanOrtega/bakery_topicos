@@ -25,7 +25,7 @@ class SaleController extends Controller
         //
         $Sale = Sale::create([
             'Id_foreign_key'=>$request->Id_foreign_key, 
-            'Id_foreign_keycars'=>$request->Id_foreign_keycars,
+            'Id_foreign_keycackes'=>$request->Id_foreign_keycackes,
             'amount'=>$request->amount
         ]);
         
@@ -59,7 +59,7 @@ class SaleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Venta $venta)
+    public function update(Request $request, Sale $sale)
     {
         //
     }

@@ -67,7 +67,7 @@ function Menu() {
                                     <Link to={`/home?token=${token}`} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-3 rounded-md text-sm font-medium">
                                         Pagina principall
                                     </Link>
-                                    <Link to={`/Cars?token=${token}`} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Autos</Link>
+                                    <Link to={`/Cackes?token=${token}`} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Autos</Link>
                                     <Link to={`/SellsAdmon?token=${token}`} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas</Link>
                                 </div>
                                 <div>
@@ -116,9 +116,9 @@ function Menu() {
                                     <Icon className="text-white font-cursiva "></Icon>
                                     <Link to={`/home?token=${token}`} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-3 rounded-md text-sm font-medium">
                                         Pagina principal
-                                    </Link><Link to="Cars" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Autos</Link>
-                                    <Link to="CarsAdmon" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Administracion de autos</Link>
-                                    <Link to="BrandsAdmon" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Administracion de marcas</Link>
+                                    </Link><Link to="Cackes" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Autos</Link>
+                                    <Link to="CackesAdmon" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Administracion de autos</Link>
+                                    <Link to="IngredientsAdmon" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Administracion de marcas</Link>
                                     <Link to="SellsAdmon" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas</Link>
                                 </div>
                                 <div>

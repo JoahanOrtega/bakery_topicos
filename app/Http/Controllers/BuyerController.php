@@ -26,18 +26,12 @@ class BuyerController extends Controller
             'phone_number' => 'required',
             'street' => 'required',
             'House_number' => 'required',
-            'name' => 'required',
-            'Surname' => 'required',
-            'second_surname' => 'required',
             'id_user' => 'required',
         ]);
         $buyer = Buyer::create([
             'phone_number' => $request->phone_number,
             'street' => $request->street,
             'House_number' => $request->House_number,
-            'name' => $request->name,
-            'Surname' => $request-> Surname,
-            'second_surname' => $request-> second_surname,
             'id_user' => $request-> id_user,
 
         ]);

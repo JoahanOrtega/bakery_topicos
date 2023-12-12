@@ -4,40 +4,30 @@ import NextIcon from '../../Images/Icons/Next.png';
 
 function Cards(props) {
     const navigate = useNavigate();
-    const model = props.model;
-    const year = props.year;
-    const colour = props.colour;
-    const type = props.type; // Cambio aquí
-    const fuel = props.fuel;
-    const disponibility = props.disp;
+    const name = props.name;
+    const stock = props.stock;
+    const type = props.type;
+    const size = props.size;
     const Image = props.image;
-    const Km = props.Km;
-    const version = props.version;
-    const TM = props.TM;
-    const liters = props.liters;
+    const flavors = props.flavors;
     const price = props.price;
-    const carId = props.id;
+    const cackeId = props.id;
     const Available = props.Available;
 
 
     const handleButtonClick = () => {
-        console.log("id en cards" + carId);
+        console.log("id en cards" + cackeId);
         navigate('/ViewCar', {
             state: {
-                model: model,
-                year: year,
-                colour: colour,
+                name: name,
+                stock: stock,
                 type: type,
-                fuel: fuel,
+                size: size,
                 Available: Available,
                 image: Image,
-                Km: Km,
-                version: version,
-                TM: TM,
-                liters: liters,
+                flavors: flavors,
                 price: price,
-                id: carId,
-            
+                id: cackeId,
             }
         });
     };
@@ -50,13 +40,10 @@ function Cards(props) {
                     <a href="#">
                         <h5 className="text-black font-bold text-2xl tracking-tight">{model}</h5>
                     </a>
-                    {/* <h2>precio</h2> */}
 
                     <p className="font-normal text-black mb-3 ">
                         {year} - {Km} km - {liters} lts - Precio: {price} $
                     </p>
-                    {/* <h1 className='m-3 font-bold text-xl'>$ precio: </h1> */}
-                    {/* <p className='m-3'>desde $3250 /Mes</p> */}
                     <button onClick={handleButtonClick} className="mt-5 text-black font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex border-solid border-2">
                         Mas informacion
                         <img src={NextIcon} className="w-6 h-6" alt="" />

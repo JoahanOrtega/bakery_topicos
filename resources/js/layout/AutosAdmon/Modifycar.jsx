@@ -54,7 +54,7 @@ const ModifyCar = () => {
         formData.append("price", formValue.price);
 
 
-        const response = await axios.post(`http://localhost/bakery_topicos/public/api/Updatecar/${car.id}`,
+        const response = await axios.post(`http://localhost/bakery_topicos/public/api/Updatecacke/${car.id}`,
             formData,
             {
                 headers: {
@@ -71,7 +71,7 @@ const ModifyCar = () => {
 
         if (response.status === 200) {
             console.log("Registration successful!");
-            navigate("/CarsAdmon");//desde el nombre
+            navigate("/CackesAdmon");//desde el nombre
         } else {
             console.log("Error during registration: ", response.data.message);
         }
@@ -174,7 +174,7 @@ const ModifyCar = () => {
                         <div className="">
                             <PrimaryButton className="w-full">Registrar</PrimaryButton>
 
-                            <LinktoButton to="/CarsAdmon" className="my-3 w-full bg-red-700 text-black">
+                            <LinktoButton to="/CackesAdmon" className="my-3 w-full bg-red-700 text-black">
                                 Regresar
                                 <img src={BackIcon} alt="" className="ml-2 w-4 h-4" />
                             </LinktoButton>

@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('sale', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('Id_foreign_key');
-            $table->unsignedBigInteger('Id_foreign_keycars');
+            $table->unsignedBigInteger('Id_foreign_keycackes');
             $table->bigInteger('amount');
             $table->timestamps();
 
             $table->foreign('Id_foreign_key')->references('id')->on('users');
-            $table->foreign('Id_foreign_keycars')->references('id')->on('Cars');
+            $table->foreign('Id_foreign_keycackes')->references('id')->on('cackes');
         });
     }
 

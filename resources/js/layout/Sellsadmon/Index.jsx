@@ -23,7 +23,7 @@ function indexSell() {
                     setUserData(userResponse.data);
                 }
 
-                const carResponse = await axios.get('http://localhost/bakery_topicos/public/api/ventas_index', {
+                const carResponse = await axios.get('http://localhost/bakery_topicos/public/api/sells_index', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }

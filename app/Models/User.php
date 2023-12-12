@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -24,7 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        
+
     ];
 
     /**
@@ -46,12 +47,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function Comprador(): HasOne
+    public function Buyer(): HasOne
     {
-        return $this->hasOne(Comprador::class);
+        return $this->hasOne(Buyer::class);
     }
-    public function Venta(): HasMany
+    public function Sale(): HasMany
     {
-        return $this->hasMany(Venta::class);
+        return $this->hasMany(Sale::class);
     }
 }

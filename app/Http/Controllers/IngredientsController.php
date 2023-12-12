@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\brands;
+use App\Models\Ingredients;
 use Illuminate\Http\Request;
 
-class BrandsController extends Controller
+class IngredientsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $marca = brands::all();
-        return $marca;
+        $ingredient = Ingredients::all();
+        return $ingredient;
     }
 
     /**
@@ -31,11 +31,11 @@ class BrandsController extends Controller
     {
         $request->validate(
             [
-                'Desc'=>'required|unique:Brands,Desc|max:20'
+                'Desc'=>'required|max:200'
             ]
             );
 
-        $marca = brands::create([
+        $ingredient = Ingredients::create([
             'Desc'=> $request->Desc
         ]);
     }
@@ -43,7 +43,7 @@ class BrandsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(brands $marca)
+    public function show(Ingredients $ingredient)
     {
         //
     }
@@ -51,7 +51,7 @@ class BrandsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(brands $marca)
+    public function edit(Ingredients $marca)
     {
         //
     }
@@ -59,7 +59,7 @@ class BrandsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, brands $marca)
+    public function update(Request $request, Ingredients $ingredient)
     {
         //
     }
@@ -69,6 +69,6 @@ class BrandsController extends Controller
      */
     public function destroy(String $id)
     {
-        brands::destroy($id);
+        Ingredients::destroy($id);
     }
 }

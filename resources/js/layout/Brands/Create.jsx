@@ -34,7 +34,7 @@ function CreateBrands() {
 
 
         const response = await axios.post(
-            "http://localhost/bakery_topicos/public/api/insertBrand",
+            "http://localhost/bakery_topicos/public/api/insertIngredient",
             formData,
             {
                 headers: {
@@ -51,7 +51,7 @@ function CreateBrands() {
 
         if (response.status === 200) {
             console.log("Registration successful!");
-            navigate("/BrandsAdmon");//desde el nombre
+            navigate("/IngredientsAdmon");//desde el nombre
         } else {
             console.log("Error during registration: ", response.data.message);
         }
@@ -74,7 +74,7 @@ function CreateBrands() {
                         <div className="">
                             <PrimaryButton className="w-full hover:bg-gray-800">Registrar</PrimaryButton>
 
-                            <LinktoButton to="/BrandsAdmon" className="my-3 w-full bg-red-700 hover:bg-red-800 text-black">
+                            <LinktoButton to="/IngrediensAdmon" className="my-3 w-full bg-red-700 hover:bg-red-800 text-black">
                                 Regresar
                                 <img src={BackIcon} alt="" className="ml-2 w-4 h-4" />
                             </LinktoButton>

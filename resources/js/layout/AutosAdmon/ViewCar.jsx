@@ -43,7 +43,7 @@ function ViewCar() {
             if (e && e.preventDefault()) e.preventDefault();
             const formData = new FormData();
             formData.append("Id_foreign_key", userData.id);
-            formData.append("Id_foreign_keycars", id);
+            formData.append("Id_foreign_keycakes", id);
             formData.append("amount", price);
 
             const response = await axios.post("http://localhost/bakery_topicos/public/api/createV",//aqui pon el link que tu tienes

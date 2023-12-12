@@ -10,56 +10,56 @@ import { useContext } from 'react';
 import { AuthContext } from "../../components/AuthProvider"
 
 
-function CarsAdmon() {
-    const [cars, setCars] = useState([]);
+function CackesAdmon() {
+    const [cackes, setCackes] = useState([]);
     const [search, setSearch] = useState('');
-    const [filteredCars, setFilteredCars] = useState(cars);
+    const [filteredCackes, setFilteredCackes] = useState(cackes);
     const navigate = useNavigate();
     const { auth } = useContext(AuthContext);//token
     const token = auth.token;//token
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get('http://localhost/bakery_topicos/public/api/Car_indexadm', {
+            const result = await axios.get('http://localhost/bakery_topicos/public/api/cake_indexadm', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            setCars(result.data);
-            setFilteredCars(result.data);
+            setCackes(result.data);
+            setFilteredCackes(result.data);
         };
         fetchData();
     }, []);
 
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
-        filterCars(e.target.value);
+        filterCackes(e.target.value);
     };
 
-    const filterCars = (searchValue) => {
-        const filtered = cars.filter(car =>
-            car.Model.toLowerCase().includes(searchValue.toLowerCase())
+    const filterCackes = (searchValue) => {
+        const filtered = cackes.filter(cacke =>
+            cacke.Model.toLowerCase().includes(searchValue.toLowerCase())
         );
-        setFilteredCars(filtered);
+        setFilteredCackes(filtered);
     };
 
-    const deleteCar = (id) => {
-        axios.post(`http://localhost/bakery_topicos/public/api/car/${id}/delete`, null, {
+    const deleteCacke = (id) => {
+        axios.post(`http://localhost/bakery_topicos/public/api/cacke/${id}/delete`, null, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
-                setCars(cars.filter(car => car.id !== id));
-                setFilteredCars(filteredCars.filter(car => car.id !== id));
+                setCackes(cackes.filter(cacke => cacke.id !== id));
+                setFilteredCackes(filteredCackes.filter(cacke => cacke.id !== id));
             })
             .catch(error => {
                 console.error('Error obteniendo la data', error);
             });
     };
 
-    const handleModifyClick = (car) => {
-        navigate('/ModifyCar', { state: car })
+    const handleModifyClick = (cacke) => {
+        navigate('/ModifyCar', { state: cacke })
     };
 
     return (
@@ -74,7 +74,7 @@ function CarsAdmon() {
                     className="mt-1 block p-2 border border-black" />
 
 
-                <LinktoButton to="/CreateCars" className="my-3 bg-gray-500 text-black">
+                <LinktoButton to="/CreateCackes" className="my-3 bg-gray-500 text-black">
                     Crear registro
                     <img src={Plusicon} alt="" className="ml-2 w-4 h-4" />
                 </LinktoButton>
@@ -111,27 +111,27 @@ function CarsAdmon() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {filteredCars.map((car) => (
-                                            <tr key={car.id} className="bg-gray-100 border-b text-center">
-                                                <td className="text-sm px-6 py-4 whitespace-nowrap text-gray-900">{car.id}</td>
+                                        {filteredCackes.map((cacke) => (
+                                            <tr key={cacke.id} className="bg-gray-100 border-b text-center">
+                                                <td className="text-sm px-6 py-4 whitespace-nowrap text-gray-900">{cacke.id}</td>
                                                 <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                                                    {car.brands ? car.brands.Desc : ''}
+                                                    {cacke.ingredients ? cacke.ingredients.Desc : ''}
                                                 </td>
-                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{car.Model}</td>
-                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{car.year}</td>
-                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{car.Km}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cacke.Model}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cacke.year}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cacke.Km}</td>
 
-                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{car.price}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cacke.price}</td>
 
                                                 <td>
-                                                    <PrimaryButton onClick={() => handleModifyClick(car)} className="bg-gray-600 text-black">
+                                                    <PrimaryButton onClick={() => handleModifyClick(cacke)} className="bg-gray-600 text-black">
                                                         modificar vehiculo
                                                         <img src={EditIcon} alt="" className="ml-2 w-4 h-4" />
                                                     </PrimaryButton>
                                                 </td>
                                                 <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                                                    <PrimaryButton className="bg-gray-600 text-black" onClick={() => deleteCar(car.id)}>
-                                                        Eliminar vehiculo
+                                                    <PrimaryButton className="bg-gray-600 text-black" onClick={() => deleteCacke(cacke.id)}>
+                                                        Eliminar pastel
                                                         <img src={DeleteIcon} alt="" className="ml-2 w-4 h-4" />
                                                     </PrimaryButton>
                                                 </td>
@@ -148,4 +148,4 @@ function CarsAdmon() {
     )
 }
 
-export default CarsAdmon;
+export default CackesAdmon;

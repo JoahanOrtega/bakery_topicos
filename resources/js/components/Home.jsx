@@ -3,7 +3,6 @@ import image from '../../Images/altima.jpeg';
 import axios from "axios";
 
 import React, { useState, useEffect } from "react";
-//import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { Outlet, Link } from 'react-router-dom';
@@ -21,9 +20,9 @@ function Home() {
 
     if (token === null) {
         console.log("entro"); 
-        console.log("querry"+ queryParams);
+        console.log("querry "+ queryParams);
         token = queryParams.get('token');
-        console.log("entro token" + token);
+        console.log("entro token " + token);
     }
     const [userData, setUserData] = useState({});//para el token
 
@@ -50,7 +49,7 @@ function Home() {
             <div className="flex my-10 h-screen  rounded-lg ">
 
                 <div className="w-1/2 h-full lg:block flex ">
-                    <img src={image} alt="Car Image" className="w-full h-full object-cover transition-opacity duration-500" />
+                    <img src={image} alt="Cacke" className="w-full h-full object-cover transition-opacity duration-500" />
                 </div>
 
                 <div className="w-full lg:w-1/2 ">
@@ -116,7 +115,4 @@ function Home() {
         </>
     )
 }
-
-
-
 export default Home;

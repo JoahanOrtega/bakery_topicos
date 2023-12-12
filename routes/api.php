@@ -1,25 +1,21 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\CarsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\AuthenticationController;
 
 use App\Http\Controllers\SaleController;
 use  App\Http\Controllers\BuyerController;
+use App\Http\Controllers\CackesController;
+use App\Http\Controllers\IngredientsController;
 
 
-
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/login_user', [AuthenticationController::class, 'login_user']);
 
 Route::get('/wel', function () {
     return view('welcome');
-})->name('welcome'); // Asignando el nombre 'welcome' a la ruta '/wel'
+})->name('welcome');
 
 
 Route::middleware('auth:api')->get('/user_index', [AuthenticationController::class, 'user_index']);
@@ -27,37 +23,37 @@ Route::middleware('auth:api')->get('/user_index', [AuthenticationController::cla
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/Car_index', [CarsController::class, 'index']);
+Route::get('/cake_index', [CackesController::class, 'index']);
 
 Route::middleware('auth:api')->group(function () {
 
-    Route::get('/Car_indexadm', [CarsController::class, 'indexadm']);
+    Route::get('/cake_indexadm', [CackesController::class, 'indexadm']);
 
     //logout
     Route::post('/logout', [AuthenticationController::class, 'logout']);
     
     //show
-    Route::get('/ventas_index', [SaleController::class, 'index']);
-    Route::get('/Brands_index', [BrandsController::class, 'index']);
+    Route::get('/sells_index', [SaleController::class, 'index']);
+    Route::get('/Ingredients_index', [IngredientsController::class, 'index']);
 
     //create
-    Route::get('/Car_brands', [CarsController::class, 'create']);
+    Route::get('/cake_ingredients', [CackesController::class, 'create']);
     Route::post('/createV', [SaleController::class, 'create']);
     Route::post('/infoC', [BuyerController::class, 'create']);
 
     //store
-    Route::post('/insert', [CarsController::class, 'store']);
-    Route::post('/insertBrand', [BrandsController::class, 'store']);
+    Route::post('/insert', [CackesController::class, 'store']);
+    Route::post('/insertIngredient', [IngredientsController::class, 'store']);
 
     //update
-    Route::post('/Updatecar/{id}', [CarsController::class, 'update']);
+    Route::post('/Updatecacke/{id}', [CackesController::class, 'update']);
 
     //delete
-    Route::post('/car/{id}/delete', [CarsController::class, 'destroy']);
-    Route::post('/Brands/{id}/delete', [BrandsController::class, 'destroy']);
+    Route::post('/cacke/{id}/delete', [CackesController::class, 'destroy']);
+    Route::post('/Brands/{id}/delete', [IngredientsController::class, 'destroy']);
 
     
-    Route::get('/Car_token', [CarsController::class, 'token']);
-    Route::post('/disable/{id}', [CarsController::class, 'disable']);
+    Route::get('/cacke_token', [CackesController::class, 'token']);
+    Route::post('/disable/{id}', [CackesController::class, 'disable']);
 
 });

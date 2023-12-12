@@ -17,7 +17,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-// Route::ge
-Route::get('/Car_token', [AutoController::class, 'token']);

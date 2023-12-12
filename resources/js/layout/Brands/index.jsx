@@ -5,8 +5,8 @@ import axios from "axios"
 import { useContext } from 'react';
 import { AuthContext } from "../../components/AuthProvider";
 
-function BrandsAdmon() {
-    const [cars, setCars] = useState([]);
+function IngredientsAdmon() {
+    const [cackes, setCackes] = useState([]);
     const { auth } = useContext(AuthContext);//token
     const [search, setSearch] = useState('');
 
@@ -15,20 +15,20 @@ function BrandsAdmon() {
     };
 
     // Filtra los carros basados en el término de búsqueda
-    const filteredCars = cars.filter(car =>
-        car.Desc.toLowerCase().includes(search.toLowerCase())
+    const filteredCackes = cackes.filter(cacke =>
+        cacke.Desc.toLowerCase().includes(search.toLowerCase())
     );
 
     const token = auth.token;//token
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get('http://localhost/bakery_topicos/public/api/Brands_index', {
+            const result = await axios.get('http://localhost/bakery_topicos/public/api/Ingredients_index', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             })
 
-            setCars(result.data);
+            setCackes(result.data);
 
         };
         fetchData();
@@ -37,7 +37,7 @@ function BrandsAdmon() {
     return (
         <>
             <div className="container my-5 mx-auto">
-                <h1 className="text-xl">Panel de administracion de marcas</h1>
+                <h1 className="text-xl">Panel de administracion de Ingredientes</h1>
                 <input
                     type="text"
                     placeholder="Buscar por marca..."
@@ -66,10 +66,10 @@ function BrandsAdmon() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {filteredCars.map((car) => (
-                                            <tr key={car.id} className="bg-gray-100 border-b text-center">
-                                                <td className="text-sm  px-6 py-4 whitespace-nowrap text-gray-900">{car.id}</td>
-                                                <td className="text-sm text-gray-900  px-6 py-4 whitespace-nowrap">{car.Desc}</td>
+                                        {filteredCackes.map((cacke) => (
+                                            <tr key={cacke.id} className="bg-gray-100 border-b text-center">
+                                                <td className="text-sm  px-6 py-4 whitespace-nowrap text-gray-900">{cacke.id}</td>
+                                                <td className="text-sm text-gray-900  px-6 py-4 whitespace-nowrap">{cacke.Desc}</td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -83,4 +83,4 @@ function BrandsAdmon() {
     )
 }
 
-export default BrandsAdmon;
+export default IngredientsAdmon;
