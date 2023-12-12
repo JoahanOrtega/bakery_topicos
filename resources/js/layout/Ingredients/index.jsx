@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from "../../components/AuthProvider";
 
 function IngredientsAdmon() {
-    const [cackes, setCackes] = useState([]);
+    const [cakes, setCakes] = useState([]);
     const { auth } = useContext(AuthContext);//token
     const [search, setSearch] = useState('');
 
@@ -15,8 +15,8 @@ function IngredientsAdmon() {
     };
 
     // Filtra los carros basados en el término de búsqueda
-    const filteredCackes = cackes.filter(cacke =>
-        cacke.Desc.toLowerCase().includes(search.toLowerCase())
+    const filteredCakes = cakes.filter(cake =>
+        cake.Desc.toLowerCase().includes(search.toLowerCase())
     );
 
     const token = auth.token;//token
@@ -28,7 +28,7 @@ function IngredientsAdmon() {
                 }
             })
 
-            setCackes(result.data);
+            setCakes(result.data);
 
         };
         fetchData();
@@ -67,10 +67,10 @@ function IngredientsAdmon() {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {filteredCackes.map((cacke) => (
-                                            <tr key={cacke.id} className="bg-gray-100 border-b text-center">
-                                                <td className="text-sm text-gray-900 px-6 py-4 text-center">{cacke.id}</td>
-                                                <td className="text-sm text-gray-900 px-6 py-4 text-center">{cacke.Desc}</td>
+                                        {filteredCakes.map((cake) => (
+                                            <tr key={cake.id} className="bg-gray-100 border-b text-center">
+                                                <td className="text-sm text-gray-900 px-6 py-4 text-center">{cake.id}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 text-center">{cake.Desc}</td>
                                             </tr>
                                         ))}
                                     </tbody>

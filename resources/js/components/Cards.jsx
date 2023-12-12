@@ -8,15 +8,15 @@ function Cards(props) {
     const stock = props.stock;
     const type = props.type;
     const size = props.size;
-    const Image = props.image;
+    const Image = props.Image;
     const flavors = props.flavors;
     const price = props.price;
-    const cackeId = props.id;
+    const cakeId = props.id;
     const Available = props.Available;
 
 
     const handleButtonClick = () => {
-        console.log("id en cards" + cackeId);
+        console.log("id en cards" + cakeId);
         navigate('/ViewCar', {
             state: {
                 name: name,
@@ -27,7 +27,7 @@ function Cards(props) {
                 image: Image,
                 flavors: flavors,
                 price: price,
-                id: cackeId,
+                id: cakeId,
             }
         });
     };
@@ -35,14 +35,15 @@ function Cards(props) {
     return (
         <>
             <div className="mt-5 shadow-md border border-gray-200 rounded-lg max-w-sm bg-white dark:border-gray-700 text-white mx-2">
+                {console.log(Image)};
                 <img className="rounded-t-lg" src={'http://localhost/bakery_topicos/public/storage/' + Image} alt="" />
                 <div className="p-5">
                     <a href="#">
-                        <h5 className="text-black font-bold text-2xl tracking-tight">{model}</h5>
+                        <h5 className="text-black font-bold text-2xl tracking-tight">{name}</h5>
                     </a>
 
                     <p className="font-normal text-black mb-3 ">
-                        {year} - {Km} km - {liters} lts - Precio: {price} $
+                        Precio: {price} $
                     </p>
                     <button onClick={handleButtonClick} className="mt-5 text-black font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex border-solid border-2">
                         Mas informacion

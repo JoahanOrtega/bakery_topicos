@@ -15,18 +15,18 @@ import { AuthContext } from "../../components/AuthProvider"
 const ModifyCar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const car = location.state;
+    const cake = location.state;
     const { auth } = useContext(AuthContext);//token
 
     const token = auth.token;//token
     const [formValue, setFormValue] = useState({
-        Model: car.Model,
-        year: car.year,
-        Colour: car.Colour,
-        type: car.type,
-        Km: car.Km,
-        price: car.price,
-        Available: car.Available,
+        name: cake.name,
+        stock: cake.stock,
+        flavors: cake.flavors,
+        size: cake.size,
+        type: cake.type,
+        price: cake.price,
+        Available: cake.Available,
         // Image: car.Image
     });
 
@@ -40,21 +40,18 @@ const ModifyCar = () => {
 
         const formData = new FormData();
         // formData.append("Id_Brand_fk", formValue.Id_Brand_fk);
-        formData.append("Model", formValue.Model);
-        formData.append("year", formValue.year);
-        formData.append("Colour", formValue.Colour);
+        formData.append("name", formValue.name);
+        formData.append("stock", formValue.stock);
+        formData.append("flavors", formValue.flavors);
+        formData.append("size", formValue.size);
         formData.append("type", formValue.type);
-        // formData.append("fuel", formValue.fuel);
         formData.append("Available", formValue.Available);
         formData.append("Image", e.target.elements.Image.files[0]); // Adjunta el archivo
-        formData.append("Km", formValue.Km);
-        // formData.append("version", formValue.version);
-        // formData.append("TM", formValue.TM);
-        // formData.append("liters", formValue.liters);
         formData.append("price", formValue.price);
 
+        console.log('lo que estoy guardando en la imagen x2 ' + e.target.elements.Image.files[0]);
 
-        const response = await axios.post(`http://localhost/bakery_topicos/public/api/Updatecacke/${car.id}`,
+        const response = await axios.post(`http://localhost/bakery_topicos/public/api/Updatecake/${cake.id}`,
             formData,
             {
                 headers: {
@@ -71,7 +68,7 @@ const ModifyCar = () => {
 
         if (response.status === 200) {
             console.log("Registration successful!");
-            navigate("/CackesAdmon");//desde el nombre
+            navigate("/CakesAdmon");//desde el nombre
         } else {
             console.log("Error during registration: ", response.data.message);
         }
@@ -80,7 +77,7 @@ const ModifyCar = () => {
     return (
         <>
             <div className="Container my-12">
-                <h1 className="text-xl text-center">Agregar auto</h1>
+                <h1 className="text-xl text-center">Agregar pastel</h1>
                 <div className="flex justify-center items-center">
 
                     <form onSubmit={handleSubmit} style={{ width: '50%', maxWidth: '500px' }} encType="multipart/form-data">
@@ -98,34 +95,35 @@ const ModifyCar = () => {
                             </select>
 
                         </div> */}
-                        
+
                         <select value={formValue.Available} onChange={onChange} id="Available" name="Available" className="mt-1 block w-full p-2 border border-black">
                             <option value="00">Disponibilidad del carro</option>
                             <option value="1">Disponible</option>
                             <option value="0">No disponible</option>
                         </select>
                         <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="Model" value="Modelo del auto" />
-                            <TextInput value={formValue.Model} onChange={onChange} id="Model" type="text" name="Model" className="mt-1 block w-full p-2 border border-black" required />
+                            <InputLabel htmlFor="name" value="Nombre del producto" />
+                            <TextInput value={formValue.name} onChange={onChange} id="name" type="text" name="name" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
 
                         <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="year" value="Año del vehiculo" />
-                            <TextInput value={formValue.year} onChange={onChange} id="year" type="number" name="year" className="mt-1 block w-full p-2 border border-black" required />
+                            <InputLabel htmlFor="stock" value="Stock del producto" />
+                            <TextInput value={formValue.stock} onChange={onChange} id="stock" type="number" name="stock" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
 
                         <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="Colour" value="Color" />
-                            <TextInput value={formValue.Colour} onChange={onChange} id="Colour" type="text" name="Colour" className="mt-1 block w-full p-2 border border-black" required />
+                            <InputLabel htmlFor="flavors" value="Sabor" />
+                            <TextInput value={formValue.flavors} onChange={onChange} id="flavors" type="text" name="flavors" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
 
                         <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="type" value="Carroceria" />
+                            <InputLabel htmlFor="size" value="Tamaño" />
+                            <TextInput value={formValue.size} onChange={onChange} id="size" type="text" name="size" className="mt-1 block w-full p-2 border border-black" required />
+                        </div>
+
+                        <div className="mt-4 mb-4" >
+                            <InputLabel htmlFor="type" value="Tipo de postre" />
                             <TextInput value={formValue.type} onChange={onChange} id="type" type="text" name="type" className="mt-1 block w-full p-2 border border-black" required />
-                        </div>
-                        <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="Km" value="Km" />
-                            <TextInput value={formValue.Km} onChange={onChange} id="Km" type="number" name="Km" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
                         {/* <div className="mt-4 mb-4" >
                             <InputLabel htmlFor="version" value="Versión" />
@@ -141,30 +139,9 @@ const ModifyCar = () => {
                         </div> */}
 
                         <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="price" value="Costo del carro" />
+                            <InputLabel htmlFor="price" value="Costo del producto" />
                             <TextInput value={formValue.price} onChange={onChange} id="price" type="number" name="price" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
-
-                        {/* <select value={formValue.fuel} onChange={onChange} id="fuel" name="fuel" className="mt-1 block w-full p-2 border border-black">
-                            <option value="0">Selecciona un tipo de combustible</option>
-                            <option value="gasolina">Gasolina</option>
-                            <option value="diesel">Diesel</option>
-                            <option value="electrico">Electrico</option>
-                            <option value="hibrido">Hibrido</option>
-                        </select> */}
-
-{/*
-                        <div className="mt-4 mb-4">
-                            <InputLabel htmlFor="Available" value="¿Disponible?" />
-
-                            <select value={formValue.Available} onChange={onChange} id="Available" name="Available" className="mt-1 block w-full p-2 border border-black">
-                                <option value="0">Selecciona una opcion</option>
-                                <option value="1">Disponible</option>
-                                <option value="2">Sin disponibilidad</option>
-                            </select>
-
-                        </div>
-                    */}
 
                         <div className="mt-4 mb-4">
                             <InputLabel htmlFor="Image" value="Subir imagen." />
@@ -174,7 +151,7 @@ const ModifyCar = () => {
                         <div className="">
                             <PrimaryButton className="w-full">Registrar</PrimaryButton>
 
-                            <LinktoButton to="/CackesAdmon" className="my-3 w-full bg-red-700 text-black">
+                            <LinktoButton to="/CakesAdmon" className="my-3 w-full bg-red-700 text-black">
                                 Regresar
                                 <img src={BackIcon} alt="" className="ml-2 w-4 h-4" />
                             </LinktoButton>

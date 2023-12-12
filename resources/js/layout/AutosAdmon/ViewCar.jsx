@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 function ViewCar() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { id, model, year, colour, type, fuel, Available, image, setShowCarInfo, Km, version, TM, liters, price } = location.state;
+    const { id, name, stock, favlors, size, type, Available, image, price } = location.state;
     const { auth } = useContext(AuthContext);//token
     const token = auth.token;//token
     console.log("id en viw nuevo" + id);
@@ -58,10 +58,10 @@ function ViewCar() {
                 // console.log(response);
 
                 console.log("usuario" + userData.name);
-                console.log("id-usuario_fk", userData.id, "id_Auto_fk", id, "monto", price);
+                console.log("id-usuario_fk", userData.id, "id_Cake_fk", id, "monto", price);
                 alert("Compra hecha");
 
-                const responsedisp =  axios.post(`http://localhost/bakery_topicos/public/api/disable/${id}`,
+                const responsedisp = axios.post(`http://localhost/bakery_topicos/public/api/disable/${id}`,
                     formData,
                     {
                         headers: {
@@ -90,67 +90,36 @@ function ViewCar() {
         <div className=''>
             <div className="Container flex mt-5">
                 <div className="w-3/4">
+                    {console.log(image)}
                     <img className="rounded-t-lg" src={'http://localhost/bakery_topicos/public/storage/' + image} alt="" />
                 </div>
                 <div className="w-1/4 pl-3 mr-2">
                     <div className='border border-gray-300 mx-10 h-auto w-full'>
-                        <h1 className='m-3 font-bold text-xl'>{model}</h1>
-                        <p className='m-3'>{Km} kilometros</p>
+                        <h1 className='m-3 font-bold text-xl'>{name}</h1>
                     </div>
 
                     <div className='border border-gray-300 mx-10 h-auto w-full mt-5'>
                         <h1 className='m-3 font-bold text-xl'>$ {price}</h1>
-                        <p className='m-3'>desde $3250 /Mes</p>
                     </div>
 
                     <div className='border border-gray-300 mx-10 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Año:</h1>
-                        <p className='m-3'>{year}</p>
+                        <h1 className='m-3 font-bold text-xl'>Tamaño:</h1>
+                        <p className='m-3'>{size}</p>
                     </div>
 
                     <div className='border border-gray-300 mx-10 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Version</h1>
-                        <p className='m-3'>{version}</p>
+                        <h1 className='m-3 font-bold text-xl'>Sabor</h1>
+                        <p className='m-3'>{favlors}</p>
                     </div>
 
                     <div className='border border-gray-300 mx-10 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Transmisión</h1>
-                        <p className='m-3'>{TM}</p>
+                        <h1 className='m-3 font-bold text-xl'>Stock</h1>
+                        <p className='m-3'>{stock}</p>
                     </div>
 
                     <div className='border border-gray-300 mx-10 h-auto w-full'>
-                        <PrimaryButton onClick={ButtonBuy} className='w-full mt-5'>Comprar automovil</PrimaryButton>
+                        <PrimaryButton onClick={ButtonBuy} className='w-full mt-5'>Comprar pastel</PrimaryButton>
                         <PrimaryButton onClick={handleButtonClick} className='w-full mt-5 bg-red-500 hover:bg-red-600'>Regresar</PrimaryButton>
-                    </div>
-                </div>
-            </div>
-            <div className='container flex'>
-                {/* <h1 className='my-5 font-bold text-xl'>Información Basica</h1> */}
-                <div className='w-1/4'>
-                    <div className='border border-gray-300 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Transmisión</h1>
-                        <p className='m-3'>{TM}</p>
-                    </div>
-
-                    <div className='border border-gray-300  h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Color del auto</h1>
-                        <p className='m-3'>{colour}</p>
-                    </div>
-
-                    <div className='border border-gray-300 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Tipo de combustible</h1>
-                        <p className='m-3'>{fuel}</p>
-                    </div>
-                </div>
-                <div className='w-1/4 ml-5'>
-                    <div className='border border-gray-300  h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Carroceria del auto</h1>
-                        <p className='m-3'>{type}</p>
-                    </div>
-
-                    <div className='border border-gray-300 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Capacidad del motor</h1>
-                        <p className='m-3'>{liters}</p>
                     </div>
                 </div>
             </div>

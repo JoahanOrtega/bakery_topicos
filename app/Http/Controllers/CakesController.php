@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cackes;
+use App\Models\Cakes;
 use App\Models\Ingredients;
 use Illuminate\Http\Request;
 
-class CackesController extends Controller
+class CakesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cackes = Cackes::with('Ingredients')
+        $cakes = Cakes::with('Ingredients')
             ->where('Available', 1)
             ->get();
 
-        return response()->json($cackes);
+        return response()->json($cakes);
     }
     public function indexadm()
     {
-        $cackes = Cackes::with('Ingredients')
+        $cakes = Cakes::with('Ingredients')
             ->get();
 
-        return response()->json($cackes);
+        return response()->json($cakes);
     }
 
     /**
@@ -42,7 +42,7 @@ class CackesController extends Controller
             'Id_Ingredients_fk' => 'required',
             'name' => 'required',
             'stock' => 'required|numeric|min:0',
-            'type' => 'required|min:4|max:25',
+            'type' => 'required',
             'size' => 'required',
             'Available' => 'required|min:0',
             'Image' => 'required|mimes:jpeg,png,jpg',
@@ -54,7 +54,7 @@ class CackesController extends Controller
         if ($request->hasFile('Image')) {
             $imagePath = $request->file('Image')->store('Images', 'public');
 
-            $auto = Cackes::create([
+            $cake = Cakes::create([
                 'Id_Ingredients_fk' => $request->Id_Ingredients_fk,
                 'name' => $request->name,
                 'stock' => $request->stock,
@@ -72,7 +72,7 @@ class CackesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cackes $cacke)
+    public function show(Cakes $cake)
     {
         //
     }
@@ -80,7 +80,7 @@ class CackesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cackes $cacke)
+    public function edit(Cakes $cake)
     {
         //
     }
@@ -89,9 +89,9 @@ class CackesController extends Controller
      * Update the specified resource in storage.
      */ public function update(Request $request, $id)
     {
-        $cacke = Cackes::find($id);
+        $cake = Cakes::find($id);
 
-        if (!$cacke) {
+        if (!$cake) {
             return response()->json(['error' => 'Pastel no encontrado'], 404);
         }
 
@@ -107,31 +107,31 @@ class CackesController extends Controller
         if ($request->hasFile('Image')) {
             $imagePath = $request->file('Image')->store('Images', 'public');
 
-            $cacke->update([
+            $cake->update([
                 'name' => $request->name,
                 'stock' => $request->stock,
                 'type' => $request->type,
                 'size' => $request->size,
                 'price' => $request->price,
                 'flavors' => $request->flavors,
-                "Image" => $imagePath,
-                "Available" => $request->Available,
+                'Image' => $imagePath,
+                'Available' => $request->Available,
             ]);
         } else {
 
 
-            $cacke->update([
+            $cake->update([
                 'name' => $request->name,
                 'stock' => $request->stock,
                 'type' => $request->type,
                 'size' => $request->size,
-                'Km' => $request->Km,
+                'flavors' => $request->flavors,
                 'price' => $request->price,
                 'Available' => $request->Available,
             ]);
         }
 
-        return response()->json(['message' => 'Pastel actualizado correctamente', 'data' => $cacke]);
+        return response()->json(['message' => 'Pastel actualizado correctamente', 'data' => $cake]);
     }
 
     /**
@@ -139,22 +139,22 @@ class CackesController extends Controller
      */
     public function destroy(String $id)
     {
-        Cackes::destroy($id);
+        Cakes::destroy($id);
     }
 
     public function disable(Request $request, $id)
     {
-        $cacke = Cackes::find($id);
+        $cake = Cakes::find($id);
 
-        if (!$cacke) {
+        if (!$cake) {
             return response()->json(['error' => 'Pastel no encontrado'], 404);
         }
 
         if ($request->hasFile('Image')) {
             $imagePath = $request->file('Image')->store('Images', 'public');
         }
-        $cacke->Available = 0;
-        $cacke->save();
+        $cake->Available = 0;
+        $cake->save();
 
         return response()->json(['message' => 'Pastel actualizado correctamente']);
     }

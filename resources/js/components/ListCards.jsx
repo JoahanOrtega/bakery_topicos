@@ -3,24 +3,24 @@ import axios from 'axios';
 import Cards from './Cards';
 
 function ListCards() {
-    const [cackeData, setCackeData] = useState([]);
+    const [cakeData, setCakeData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedType, setSelectedType] = useState('');
 
     useEffect(() => {
-        const getCackes = async () => {
+        const getCakes = async () => {
             await axios.get('http://localhost/bakery_topicos/public/api/cake_index')
                 .then(function (response) {
                     console.log(response);
                     console.log('API Response:', response.data);
-                    setCackeData(response.data);
+                    setCakeData(response.data);
                 })
                 .catch(function (error) {
                     console.log(error);
                     console.error('API Error:', error);
                 });
         }
-        getCackes();
+        getCakes();
     }, []);
 
     const handleSearchChange = (event) => {
@@ -28,9 +28,9 @@ function ListCards() {
     };
 
 
-    const filteredCackes = cackeData.filter(cacke =>
-        cacke.Model.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedType === '' || cacke.type === selectedType)
+    const filteredCakes = cakeData.filter(cake =>
+        cake.type.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedType === '' || cake.type === selectedType)
     );
     const handleTypeChange = (event) => {
         setSelectedType(event.target.value);
@@ -39,8 +39,8 @@ function ListCards() {
 
     console.log('Selected type:', selectedType);
 
-    cackeData.forEach(cacke => {
-        console.log('cacke type:', cacke.type);
+    cakeData.forEach(cake => {
+        console.log('cake type:', cake.type);
     });
 
 
@@ -62,19 +62,19 @@ function ListCards() {
                         value={selectedType}
                         onChange={handleTypeChange}
                     >
-                        <option value="">Selecciona un Tipo de Postre</option>
-                        <option value="Pastel">Pastel</option>
+                        <option value="0">Selecciona un Tipo de Postre</option>
+                        <option value="Cake">Pastel</option>
                         <option value="Gelatina">Gelatina</option>
                         <option value="Cupcake">Cupcake</option>
                     </select>
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                    {filteredCackes.length ? (
-                        filteredCackes.map((cacke) => (
+                    {filteredCakes.length ? (
+                        filteredCakes.map((cake) => (
                             <Cards
-                                key={cacke.id}
-                                {...cacke}
+                                key={cake.id}
+                                {...cake}
                             />
                         ))
                     ) : (

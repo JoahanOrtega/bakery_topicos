@@ -14,8 +14,8 @@ class Ingredients extends Model
     protected $fillable = [
         'Desc'
     ];
-    public function Cackes(): HasMany
+    public function Cakes(): HasMany
     {
-        return $this->hasMany(Cackes::class, 'Id_Ingredients_fk', 'id');
+        return $this->hasMany(Cakes::class, 'Id_Ingredients_fk', 'id');
     }
 }

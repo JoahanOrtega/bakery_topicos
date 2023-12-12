@@ -74,7 +74,7 @@ function CreateBrands() {
                         <div className="">
                             <PrimaryButton className="w-full hover:bg-gray-800">Registrar</PrimaryButton>
 
-                            <LinktoButton to="/IngrediensAdmon" className="my-3 w-full bg-red-700 hover:bg-red-800 text-black">
+                            <LinktoButton to="/IngredientsAdmon" className="my-3 w-full bg-red-700 hover:bg-red-800 text-black">
                                 Regresar
                                 <img src={BackIcon} alt="" className="ml-2 w-4 h-4" />
                             </LinktoButton>

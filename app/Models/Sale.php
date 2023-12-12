@@ -11,7 +11,7 @@ class Sale extends Model
     protected $table = "Sale";
     protected $fillable=[
         'Id_foreign_key',
-        'Id_foreign_keycackes',
+        'Id_foreign_keycakes',
         'amount'
 
     ];
@@ -20,9 +20,9 @@ class Sale extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function Auto(): BelongsTo
+    public function Cake(): BelongsTo
     {
-        return $this->belongsTo(Cackes::class);
+        return $this->belongsTo(Cakes::class);
     }
 }
 

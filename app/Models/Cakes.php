@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Cackes extends Model
+class Cakes extends Model
 {
     use HasFactory;
-    protected $table = "cackes";
+    protected $table = "cakes";
 
     public function Sale(): HasMany
     {

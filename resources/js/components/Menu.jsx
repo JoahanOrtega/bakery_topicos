@@ -67,7 +67,7 @@ function Menu() {
                                     <Link to={`/home?token=${token}`} className="text-white hover:bg-pink-600 hover:text-white px-3 py-3 rounded-md text-sm font-medium">
                                         Home
                                     </Link>
-                                    <Link to={`/Cackes?token=${token}`} className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pasteles</Link>
+                                    <Link to={`/Cakes?token=${token}`} className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pasteles</Link>
                                     <Link to={`/SellsAdmon?token=${token}`} className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas realizadas</Link>
                                 </div>
                                 <div>
@@ -114,8 +114,8 @@ function Menu() {
                                     <Icon className="text-white font-cursiva "></Icon>
                                     <Link to={`/home?token=${token}`} className="text-white hover:bg-pink-600 hover:text-white px-3 py-3 rounded-md text-sm font-medium">
                                         Home
-                                    </Link><Link to="Cackes" className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pasteles</Link>
-                                    <Link to="CackesAdmon" className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">CRUD Pasteles</Link>
+                                    </Link><Link to="Cakes" className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pasteles</Link>
+                                    <Link to="CakesAdmon" className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">CRUD Pasteles</Link>
                                     <Link to="IngredientsAdmon" className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">CRUD Ingredientes</Link>
                                     <Link to="SellsAdmon" className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas realizadas</Link>
                                 </div>
@@ -161,7 +161,7 @@ function Menu() {
                             <div className="ml-10 flex items-baseline space-x-4">
                                 <Icon className="text-white font-cursiva "></Icon>
                                 <Link to="home" className="text-white hover:bg-pink-600 hover:text-white px-3 py-3 rounded-md text-sm font-medium">Home</Link>
-                                <Link to="Cackes" className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pasteles</Link>
+                                <Link to="Cakes" className="text-white hover:bg-pink-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pasteles</Link>
 
 
                             </div>

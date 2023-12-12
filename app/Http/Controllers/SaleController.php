@@ -25,7 +25,7 @@ class SaleController extends Controller
         //
         $Sale = Sale::create([
             'Id_foreign_key'=>$request->Id_foreign_key, 
-            'Id_foreign_keycackes'=>$request->Id_foreign_keycackes,
+            'Id_foreign_keycakes'=>$request->Id_foreign_keycakes,
             'amount'=>$request->amount
         ]);
         

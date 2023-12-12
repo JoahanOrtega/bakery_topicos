@@ -10,10 +10,10 @@ import { useContext } from 'react';
 import { AuthContext } from "../../components/AuthProvider"
 
 
-function CackesAdmon() {
-    const [cackes, setCackes] = useState([]);
+function CakesAdmon() {
+    const [cakes, setCakes] = useState([]);
     const [search, setSearch] = useState('');
-    const [filteredCackes, setFilteredCackes] = useState(cackes);
+    const [filteredCakes, setFilteredCakes] = useState(cakes);
     const navigate = useNavigate();
     const { auth } = useContext(AuthContext);//token
     const token = auth.token;//token
@@ -25,41 +25,41 @@ function CackesAdmon() {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            setCackes(result.data);
-            setFilteredCackes(result.data);
+            setCakes(result.data);
+            setFilteredCakes(result.data);
         };
         fetchData();
     }, []);
 
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
-        filterCackes(e.target.value);
+        filterCakes(e.target.value);
     };
 
-    const filterCackes = (searchValue) => {
-        const filtered = cackes.filter(cacke =>
-            cacke.name.toLowerCase().includes(searchValue.toLowerCase())
+    const filterCakes = (searchValue) => {
+        const filtered = cakes.filter(cake =>
+            cake.name.toLowerCase().includes(searchValue.toLowerCase())
         );
-        setFilteredCackes(filtered);
+        setFilteredCakes(filtered);
     };
 
-    const deleteCacke = (id) => {
-        axios.post(`http://localhost/bakery_topicos/public/api/cacke/${id}/delete`, null, {
+    const deleteCake = (id) => {
+        axios.post(`http://localhost/bakery_topicos/public/api/cake/${id}/delete`, null, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
-                setCackes(cackes.filter(cacke => cacke.id !== id));
-                setFilteredCackes(filteredCackes.filter(cacke => cacke.id !== id));
+                setCakes(cakes.filter(cake => cake.id !== id));
+                setFilteredCakes(filteredCakes.filter(cake => cake.id !== id));
             })
             .catch(error => {
                 console.error('Error obteniendo la data', error);
             });
     };
 
-    const handleModifyClick = (cacke) => {
-        navigate('/ModifyCar', { state: cacke })
+    const handleModifyClick = (cake) => {
+        navigate('/ModifyCar', { state: cake })
     };
 
     return (
@@ -75,7 +75,7 @@ function CackesAdmon() {
                 />
 
 
-                <LinktoButton to="/CreateCackes" className="inline-flex items-center my-3 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition duration-200 ease-in-out">
+                <LinktoButton to="/CreateCakes" className="inline-flex items-center my-3 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition duration-200 ease-in-out">
                     Crear registro
                     <img src={Plusicon} alt="" className="ml-2 w-4 h-4" />
                 </LinktoButton>
@@ -87,52 +87,59 @@ function CackesAdmon() {
                                     <thead className="bg-pink-100">
                                         <tr>
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
-                                                I D
+                                                ID
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
-                                                M A R C A
+                                                Ingredientes
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
-                                                M O D E L O
+                                                Nombre
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 ">
-                                                A Ñ O
+                                                Stock
                                             </th>
 
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 ">
-                                                K M
+                                                Tipo
                                             </th>
 
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 ">
-                                                COSTO
+                                                Tamaño
                                             </th>
-                                            <th scope="col" className="text-sm font-bold text-gray-900 px-6 py-4">
-                                                A C C I O N E S
+                                            <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 ">
+                                                Sabor
+                                            </th>
+                                            <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 ">
+                                                Precio
+                                            </th>
+                                            <th scope="col" className="text-sm font-bold text-gray-900 px-6 py-4" colspan="2">
+                                                ACCIONES
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {filteredCackes.map((cacke) => (
-                                            <tr key={cacke.id} className="bg-gray-100 border-b text-center">
-                                                <td className="text-sm px-6 py-4 whitespace-nowrap text-gray-900">{cacke.id}</td>
+                                        {filteredCakes.map((cake) => (
+                                            <tr key={cake.id} className="bg-gray-100 border-b text-center">
+                                                <td className="text-sm px-6 py-4 whitespace-nowrap text-gray-900">{cake.id}</td>
                                                 <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                                                    {cacke.ingredients ? cacke.ingredients.Desc : ''}
+                                                    {cake.ingredients ? cake.ingredients.Desc : ''}
                                                 </td>
-                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cacke.Model}</td>
-                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cacke.year}</td>
-                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cacke.Km}</td>
-
-                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cacke.price}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cake.name}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cake.stock}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cake.type}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cake.size}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cake.flavors}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{cake.price}</td>
 
                                                 <td>
-                                                    <PrimaryButton onClick={() => handleModifyClick(cacke)} className="bg-gray-600 text-black">
-                                                        modificar vehiculo
+                                                    <PrimaryButton onClick={() => handleModifyClick(cake)} className="bg-gray-600 text-black">
+                                                        modificar postre
                                                         <img src={EditIcon} alt="" className="ml-2 w-4 h-4" />
                                                     </PrimaryButton>
                                                 </td>
                                                 <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                                                    <PrimaryButton className="bg-gray-600 text-black" onClick={() => deleteCacke(cacke.id)}>
-                                                        Eliminar pastel
+                                                    <PrimaryButton className="bg-gray-600 text-black" onClick={() => deleteCake(cake.id)}>
+                                                        Eliminar postre
                                                         <img src={DeleteIcon} alt="" className="ml-2 w-4 h-4" />
                                                     </PrimaryButton>
                                                 </td>
@@ -149,4 +156,4 @@ function CackesAdmon() {
     )
 }
 
-export default CackesAdmon;
+export default CakesAdmon;

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "../../components/AuthProvider"
 
-function CreateCackes() {
+function CreateCakes() {
     const [ingredients, setIngredients] = useState([
     ]);
     const [setToken] = useState(null);
@@ -21,7 +21,7 @@ function CreateCackes() {
 
     //para poner los datos en las marcas
     useEffect(() => {
-        axios.get('http://localhost/bakery_topicos/public/api/cake_brands', {
+        axios.get('http://localhost/bakery_topicos/public/api/cake_ingredients', {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -47,7 +47,7 @@ function CreateCackes() {
         if (e && e.preventDefault()) e.preventDefault();
 
         const formData = new FormData();
-        formData.append("Id_Ingredients_fk", formValue.Id_Brand_fk);
+        formData.append("Id_Ingredients_fk", formValue.Id_Ingredient_fk);
         formData.append("name", formValue.name);
         formData.append("stock", formValue.stock);
         formData.append("type", formValue.type);
@@ -57,6 +57,7 @@ function CreateCackes() {
         formData.append("flavors", formValue.flavors);
         formData.append("price", formValue.price);
 
+        console.log('lo que estoy guardando en la imagen '+e.target.elements.Image.files[0]);
 
         const response = await axios.post(
             "http://localhost/bakery_topicos/public/api/insert",
@@ -76,7 +77,7 @@ function CreateCackes() {
 
         if (response.status === 200) {
             console.log("Registration successful!");
-            navigate("/CackesAdmon");//desde el nombre
+            navigate("/CakesAdmon");//desde el nombre
         } else {
             console.log("Error during registration: ", response.data.message);
             alert("Llena todos los campos, si no hay ingredientes, agregalos previamente");
@@ -92,9 +93,9 @@ function CreateCackes() {
                     <form onSubmit={handleSubmit} style={{ width: '50%', maxWidth: '500px' }} encType="multipart/form-data">
 
                         <div className="mt-4 mb-4">
-                            <InputLabel htmlFor="Id_marca_fk" value="Ingredientes" />
+                            <InputLabel htmlFor="Id_Ingredient_fk" value="Ingredientes" />
 
-                            <select value={formValue.Id_Brand_fk} onChange={onChange} id="Id_Brand_fk" name="Id_Brand_fk" className="mt-1 block w-full p-2 border border-black">
+                            <select value={formValue.Id_Ingredient_fk} onChange={onChange} id="Id_Ingredient_fk" name="Id_Ingredient_fk" className="mt-1 block w-full p-2 border border-black">
                                 <option value="0">Selecciona los ingredientes</option>
                                 {ingredients.map(ingredient => (
                                     <option key={ingredient.id} value={ingredient.id}>
@@ -121,15 +122,15 @@ function CreateCackes() {
                         </div>
                         <div className="mt-4 mb-4" >
                             <InputLabel htmlFor="size" value="tamaño" />
-                            <TextInput min="0" value={formValue.size} onChange={onChange} id="size" type="number" name="size" className="mt-1 block w-full p-2 border border-black" required />
+                            <TextInput value={formValue.size} onChange={onChange} id="size" type="text" name="size" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
 
                         <InputLabel htmlFor="type" value="Tipos" />
                         <select value={formValue.type} onChange={onChange} id="type" name="type" className="mt-1 block w-full p-2 border border-black">
                             <option value="0">Selecciona un tipo de postre</option>
-                            <option value="Pastel">Pastel</option>
+                            <option value="Cake">Pastel</option>
                             <option value="Gelatina">Gelatina</option>
-                            <option value="Cupcacke">Cupcacke</option>
+                            <option value="Cupcake">Cupcake</option>
                         </select>
 
                         <div className="mt-4 mb-4" >
@@ -157,7 +158,7 @@ function CreateCackes() {
                         <div className="">
                             <PrimaryButton className="w-full">Registrar</PrimaryButton>
 
-                            <LinktoButton to="/CackesAdmon" className="my-3 w-full bg-red-700 text-black">
+                            <LinktoButton to="/CakesAdmon" className="my-3 w-full bg-red-700 text-black">
                                 Regresar
                                 <img src={BackIcon} alt="" className="ml-2 w-4 h-4" />
                             </LinktoButton>
@@ -169,4 +170,4 @@ function CreateCackes() {
     )
 }
 
-export default CreateCackes
+export default CreateCakes

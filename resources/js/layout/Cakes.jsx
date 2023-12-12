@@ -1,7 +1,7 @@
 import Cards from '../components/Cards'
 import ListCards from '../components/ListCards'
 
-function Cackes() {
+function Cakes() {
     return (
         <>
             <div className="container px-4 sm:px-6 lg:px-8">
@@ -14,4 +14,4 @@ function Cackes() {
     )
 }
 
-export default Cackes
+export default Cakes

@@ -56,7 +56,7 @@ function Home() {
                 </div>
 
                 <div className="w-full">
-                    <img src={image} alt="Cacke" className="w-full object-cover transition-opacity duration-500" />
+                    <img src={image} alt="Cake" className="w-full object-cover transition-opacity duration-500" />
                 </div>
             </div>
         </>
