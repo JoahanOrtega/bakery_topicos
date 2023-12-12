@@ -17,7 +17,7 @@ function Cards(props) {
 
     const handleButtonClick = () => {
         console.log("id en cards" + cakeId);
-        navigate('/ViewCar', {
+        navigate('/ViewCake', {
             state: {
                 name: name,
                 stock: stock,

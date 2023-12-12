@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 //import { Link } from "react-router-dom";
 
 
-function ViewCar() {
+function ViewCake() {
     const location = useLocation();
     const navigate = useNavigate();
     const { id, name, stock, favlors, size, type, Available, image, price } = location.state;
@@ -128,4 +128,4 @@ function ViewCar() {
 
 }
 
-export default ViewCar
+export default ViewCake

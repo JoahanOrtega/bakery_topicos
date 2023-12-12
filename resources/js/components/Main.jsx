@@ -7,15 +7,15 @@ import Register from '../layout/Usersform/Register';
 import AdRegister from '../layout/AdmsForm/AdRegister';
 import AdPassword from '../layout/AdmsForm/AdPassword';
 import Cakes from '../layout/Cakes';
-import CakesAdmon from '../layout/AutosAdmon/Index';
+import CakesAdmon from '../layout/CakeAdmon/Index';
 import SellsAdmon from '../layout/Sellsadmon/Index';
-import CreateCakes from '../layout/AutosAdmon/CreateCake';
+import CreateCakes from '../layout/CakeAdmon/CreateCake';
 import IngredientsAdmon from '../layout/Ingredients/index'
 import CreateBrands from '../layout/Ingredients/Create'
-import ViewCar from '../layout/AutosAdmon/ViewCar'
+import ViewCake from '../layout/CakeAdmon/ViewCake'
 import { Routes, Route, Navigate } from "react-router-dom";
 import ConsumerInf from '../layout/ConsumerAdmon/ConsumerInf';
-import ModifyCar from '../layout/AutosAdmon/Modifycar';
+import ModifyCake from '../layout/CakeAdmon/Modifycake';
 import { AuthProvider } from './AuthProvider';
 
 function Main() {
@@ -36,8 +36,8 @@ function Main() {
                     <Route path="CreateCakes" element={<CreateCakes />} />
                     <Route path="IngredientsAdmon" element={<IngredientsAdmon />} />
                     <Route path="CreateBrands" element={<CreateBrands />} />
-                    <Route path="ViewCar" element={<ViewCar />} />
-                    <Route path="ModifyCar" element={<ModifyCar />} />
+                    <Route path="ViewCake" element={<ViewCake />} />
+                    <Route path="ModifyCake" element={<ModifyCake />} />
                     <Route path="*" element={<Navigate replace to="/" />} />
                 </Route>
             </Routes>

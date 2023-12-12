@@ -12,7 +12,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "../../components/AuthProvider"
 
-const ModifyCar = () => {
+const ModifyCake = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const cake = location.state;
@@ -169,4 +169,4 @@ const ModifyCar = () => {
     )
 };
 
-export default ModifyCar;
+export default ModifyCake;

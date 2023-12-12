@@ -48,7 +48,7 @@ function LoginForm() {
                 setAuth({ token });
                 setToken(token);
                 console.log("login successful. Response: ", response);
-                console.log("tokem: " + token);
+                console.log("token: " + token);
 
                 console.log("response: ");
                 console.log(response);

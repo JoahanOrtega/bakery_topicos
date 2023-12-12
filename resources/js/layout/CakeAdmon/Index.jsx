@@ -59,7 +59,7 @@ function CakesAdmon() {
     };
 
     const handleModifyClick = (cake) => {
-        navigate('/ModifyCar', { state: cake })
+        navigate('/ModifyCake', { state: cake })
     };
 
     return (
