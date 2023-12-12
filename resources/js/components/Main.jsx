@@ -6,12 +6,12 @@ import Login from '../layout/Usersform/login';
 import Register from '../layout/Usersform/Register';
 import AdRegister from '../layout/AdmsForm/AdRegister';
 import AdPassword from '../layout/AdmsForm/AdPassword';
-import Cackes from '../layout/Cackes';
+import Cackes from '../layout/Cakes';
 import CackesAdmon from '../layout/AutosAdmon/Index';
 import SellsAdmon from '../layout/Sellsadmon/Index';
-import CreateCackes from '../layout/AutosAdmon/CreateCacke';
-import IngredientsAdmon from '../layout/Brands/index'
-import CreateBrands from '../layout/Brands/Create'
+import CreateCackes from '../layout/AutosAdmon/CreateCake';
+import IngredientsAdmon from '../layout/Ingredients/index'
+import CreateBrands from '../layout/Ingredients/Create'
 import ViewCar from '../layout/AutosAdmon/ViewCar'
 import { Routes, Route, Navigate } from "react-router-dom";
 import ConsumerInf from '../layout/ConsumerAdmon/ConsumerInf';

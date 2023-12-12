@@ -64,51 +64,49 @@ function indexSell() {
 
     return (
         <>
-            <div className="container my-5 mx-auto">
-                <h1 className="text-xl">Panel de administracion de ventas</h1>
-                <div className="my-5">
+            <div className="container mx-auto p-4">
+                <h1 className="text-2xl font-semibold text-pink-600">Panel de Administración de Ventas</h1>
+                <div className="my-4">
                     <input
                         type="text"
-                        placeholder="Buscar por ID de Comprador..."
+                        placeholder="Buscar por cliente"
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        className="p-2 border border-black"
+                        className="w-full p-2 border rounded border-pink-500"
                     />
                 </div>
                 <div className="flex flex-col mt-5">
-                    <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
-                        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="overflow-hidden">
-                                <div className="flex justify-center items-center">
-                                    <table className="min-w-full border-collapse">
-                                        <thead className="bg-gray-200 border-b">
-                                            <tr>
-                                                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-3 text-left">
-                                                    Id
-                                                </th>
-                                                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-3 text-left">
-                                                    Id del Comprador
-                                                </th>
-                                                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-3 text-left">
-                                                    Id del carro
-                                                </th>
-                                                <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-3 text-left">
-                                                    Monto
-                                                </th>
+                    <div className="overflow-x-auto">
+                        <div className="align-middle inline-block min-w-full">
+                            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5">
+                                <table className="min-w-full divide-y divide-gray-300">
+                                    <thead className="bg-pink-100">
+                                        <tr>
+                                            <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-left">
+                                                Id
+                                            </th>
+                                            <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-left">
+                                                Id del Comprador
+                                            </th>
+                                            <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-left">
+                                                Id del carro
+                                            </th>
+                                            <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-left">
+                                                Monto
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-200">
+                                        {filteredSalesBySearch.map((venta) => (
+                                            <tr key={`${venta.id}-${venta.id_usuario_fk}`}>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.id}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.Id_foreign_key}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.Id_foreign_keycars}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{venta.amount}</td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            {filteredSalesBySearch.map((venta) => (
-                                                <tr key={`${venta.id}-${venta.id_usuario_fk}`}>
-                                                    <td className="border px-6 py-3">{venta.id}</td>
-                                                    <td className="border px-6 py-3">{venta.Id_foreign_key}</td>
-                                                    <td className="border px-6 py-3">{venta.Id_foreign_keycars}</td>
-                                                    <td className="border px-6 py-3">{venta.amount}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        ))}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

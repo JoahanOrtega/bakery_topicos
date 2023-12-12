@@ -38,7 +38,7 @@ function CackesAdmon() {
 
     const filterCackes = (searchValue) => {
         const filtered = cackes.filter(cacke =>
-            cacke.Model.toLowerCase().includes(searchValue.toLowerCase())
+            cacke.name.toLowerCase().includes(searchValue.toLowerCase())
         );
         setFilteredCackes(filtered);
     };
@@ -64,26 +64,27 @@ function CackesAdmon() {
 
     return (
         <>
-            <div className="container my-5 mx-auto">
-                <h1 className="text-xl">Panel de administracion de carros</h1>
-
-                <input type="text"
-                    placeholder="Buscar por modelo..."
+            <div className="container mx-auto p-4">
+                <h1 className="text-2xl font-semibold text-pink-600">Panel de Administración de Pasteles</h1>
+                <input
+                    type="text"
+                    placeholder="Buscar por modelo"
                     value={search}
                     onChange={handleSearchChange}
-                    className="mt-1 block p-2 border border-black" />
+                    className="mt-1 block w-full p-2 border rounded border-pink-500"
+                />
 
 
-                <LinktoButton to="/CreateCackes" className="my-3 bg-gray-500 text-black">
+                <LinktoButton to="/CreateCackes" className="inline-flex items-center my-3 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition duration-200 ease-in-out">
                     Crear registro
                     <img src={Plusicon} alt="" className="ml-2 w-4 h-4" />
                 </LinktoButton>
                 <div className="flex flex-col mt-5">
-                    <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
-                        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="overflow-hidden">
-                                <table className="min-w-full">
-                                    <thead className="bg-white border-b text-center">
+                    <div className="overflow-x-auto">
+                        <div className="align-middle inline-block min-w-full">
+                            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5">
+                                <table className="min-w-full divide-y divide-gray-300">
+                                    <thead className="bg-pink-100">
                                         <tr>
                                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
                                                 I D
@@ -110,7 +111,7 @@ function CackesAdmon() {
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody className="bg-white divide-y divide-gray-200">
                                         {filteredCackes.map((cacke) => (
                                             <tr key={cacke.id} className="bg-gray-100 border-b text-center">
                                                 <td className="text-sm px-6 py-4 whitespace-nowrap text-gray-900">{cacke.id}</td>

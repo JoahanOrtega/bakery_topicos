@@ -46,44 +46,41 @@ function ListCards() {
 
     return (
         <>
-            <div className='container'>
-                <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Buscar por tipo..." className="mt-1 block p-2 border border-black" />
-                <div className="relative inline-block text-left">
+            <div className='container mx-full p-4'>
+                <div className="flex gap-4 mb-4">
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        placeholder="Buscar por tipo..."
+                        className="flex-1 p-2 border rounded border-pink-500"
+                    />
                     <select
-                        className="mt-1 block p-2 border border-black w-40"
+                        className="p-2 border rounded border-pink-500"
                         name="type"
                         id="type"
                         value={selectedType}
                         onChange={handleTypeChange}
                     >
-                        <option value="">Tipos de postres</option>
+                        <option value="">Selecciona un Tipo de Postre</option>
                         <option value="Pastel">Pastel</option>
                         <option value="Gelatina">Gelatina</option>
-                        <option value="Cupcacke">Cupcacke</option>
+                        <option value="Cupcake">Cupcake</option>
                     </select>
-
-
                 </div>
 
-
-                <div className='flex flex-wrap justify-around'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                     {filteredCackes.length ? (
                         filteredCackes.map((cacke) => (
                             <Cards
                                 key={cacke.id}
-                                id={cacke.id}
-                                name={cacke.name}
-                                stock={cacke.stock}
-                                type={cacke.type}
-                                size={cacke.size}
-                                disponibility={cacke.Available}
-                                image={cacke.Image}
-                                flavors={cacke.flavors}
-                                price={cacke.price}
+                                {...cacke}
                             />
                         ))
                     ) : (
-                        <span className="visually-hidden">Parece que no hay pasteles</span>
+                        <div className="col-span-full text-center text-gray-600">
+                            No hay postres disponibles.
+                        </div>
                     )}
                 </div>
             </div>

@@ -36,40 +36,41 @@ function IngredientsAdmon() {
 
     return (
         <>
-            <div className="container my-5 mx-auto">
-                <h1 className="text-xl">Panel de administracion de Ingredientes</h1>
-                <input
-                    type="text"
-                    placeholder="Buscar por marca..."
-                    value={search}
-                    onChange={handleSearchChange}
-                    className="mt-3 p-2 border border-black"
-                />
-                <br />
-                <LinktoButton to="/CreateBrands" className="my-3 bg-gray-500 text-black">
+            <div className="container mx-auto p-4">
+                <h1 className="text-2xl font-semibold text-pink-600">Panel de Administración de Ingredientes</h1>
+                <div className="my-4">
+                    <input
+                        type="text"
+                        placeholder="Buscar por marca..."
+                        value={search}
+                        onChange={handleSearchChange}
+                        className="w-full p-2 border rounded border-pink-500"
+                    />
+                </div>
+                <LinktoButton to="/CreateBrands" className="inline-flex items-center bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition duration-200 ease-in-out">
                     Crear registro
                     <img src={Plusicon} alt="" className="ml-2 w-4 h-4" />
                 </LinktoButton>
                 <div className="flex flex-col mt-5">
-                    <div className="overflow-x-auto sm:mx-0.5 lg:mx-0.5">
-                        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="overflow-hidden">
-                                <table className="min-w-full">
-                                    <thead className="bg-white border-b text-center">
+                    <div className="overflow-x-auto">
+                        <div className="align-middle inline-block min-w-full">
+                            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5">
+                                <table className="min-w-full divide-y divide-gray-300">
+                                    <thead className="bg-pink-100">
                                         <tr>
-                                            <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
+                                            <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-center">
                                                 I D
                                             </th>
-                                            <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4">
+                                            <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-center">
                                                 M A R C A
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody className="bg-white divide-y divide-gray-200">
                                         {filteredCackes.map((cacke) => (
                                             <tr key={cacke.id} className="bg-gray-100 border-b text-center">
-                                                <td className="text-sm  px-6 py-4 whitespace-nowrap text-gray-900">{cacke.id}</td>
-                                                <td className="text-sm text-gray-900  px-6 py-4 whitespace-nowrap">{cacke.Desc}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 text-center">{cacke.id}</td>
+                                                <td className="text-sm text-gray-900 px-6 py-4 text-center">{cacke.Desc}</td>
                                             </tr>
                                         ))}
                                     </tbody>
