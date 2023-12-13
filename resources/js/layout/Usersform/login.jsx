@@ -34,7 +34,7 @@ function LoginForm() {
         formData.append("email", formValue.email);
         formData.append("password", formValue.password);
 
-        const response = await axios.post("http://localhost/bakery_topicos/public/api/login_user",//aqui pon el link que tu tienes 
+        const response = await axios.post("http://localhost/bakery_topicos/public/api/login_user",
             formData,
             {
                 headers: {
@@ -81,7 +81,7 @@ function LoginForm() {
 
                 <div className="flex gap-3">
                     <PrimaryButton className="w-full bg-pink-500 hover:bg-pink-600 text-white rounded" >Iniciar sesión</PrimaryButton>
-                    <Link to="/Register" className="text-center text-pink-500 hover:underline hover:text-pink-600">¿No tienes cuenta? Créala aquí</Link>
+                    <Link to="/Register" className="text-center text-pink-500 hover:underline hover:text-pink-600">Crea una cuenta</Link>
                 </div>
             </form>
         </div>

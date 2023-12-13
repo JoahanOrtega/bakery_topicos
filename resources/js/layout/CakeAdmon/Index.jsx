@@ -76,8 +76,7 @@ function CakesAdmon() {
 
 
                 <LinktoButton to="/CreateCakes" className="inline-flex items-center my-3 bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition duration-200 ease-in-out">
-                    Crear registro
-                    <img src={Plusicon} alt="" className="ml-2 w-4 h-4" />
+                    Crear
                 </LinktoButton>
                 <div className="flex flex-col mt-5">
                     <div className="overflow-x-auto">
@@ -133,14 +132,12 @@ function CakesAdmon() {
 
                                                 <td>
                                                     <PrimaryButton onClick={() => handleModifyClick(cake)} className="bg-gray-600 text-black">
-                                                        modificar postre
-                                                        <img src={EditIcon} alt="" className="ml-2 w-4 h-4" />
+                                                        Editar
                                                     </PrimaryButton>
                                                 </td>
                                                 <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
                                                     <PrimaryButton className="bg-gray-600 text-black" onClick={() => deleteCake(cake.id)}>
-                                                        Eliminar postre
-                                                        <img src={DeleteIcon} alt="" className="ml-2 w-4 h-4" />
+                                                        Eliminar
                                                     </PrimaryButton>
                                                 </td>
                                             </tr>

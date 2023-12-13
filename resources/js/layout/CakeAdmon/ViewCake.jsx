@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 function ViewCake() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { id, name, stock, favlors, size, type, Available, image, price } = location.state;
+    const { id, name, stock, flavors, size, image, price } = location.state;
     const { auth } = useContext(AuthContext);//token
     const token = auth.token;//token
     console.log("id en viw nuevo" + id);
@@ -88,38 +88,20 @@ function ViewCake() {
     };
     return (
         <div className=''>
-            <div className="Container flex mt-5">
-                <div className="w-3/4">
-                    {console.log(image)}
-                    <img className="rounded-t-lg" src={'http://localhost/bakery_topicos/public/storage/' + image} alt="" />
-                </div>
-                <div className="w-1/4 pl-3 mr-2">
-                    <div className='border border-gray-300 mx-10 h-auto w-full'>
-                        <h1 className='m-3 font-bold text-xl'>{name}</h1>
-                    </div>
-
-                    <div className='border border-gray-300 mx-10 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>$ {price}</h1>
-                    </div>
-
-                    <div className='border border-gray-300 mx-10 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Tamaño:</h1>
-                        <p className='m-3'>{size}</p>
-                    </div>
-
-                    <div className='border border-gray-300 mx-10 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Sabor</h1>
-                        <p className='m-3'>{favlors}</p>
-                    </div>
-
-                    <div className='border border-gray-300 mx-10 h-auto w-full mt-5'>
-                        <h1 className='m-3 font-bold text-xl'>Stock</h1>
-                        <p className='m-3'>{stock}</p>
-                    </div>
-
-                    <div className='border border-gray-300 mx-10 h-auto w-full'>
-                        <PrimaryButton onClick={ButtonBuy} className='w-full mt-5'>Comprar pastel</PrimaryButton>
-                        <PrimaryButton onClick={handleButtonClick} className='w-full mt-5 bg-red-500 hover:bg-red-600'>Regresar</PrimaryButton>
+            <div className="Container flex flex-col mt-5">
+                <div className="w-full px-3">
+                    <div className='bg-white rounded-lg shadow-md mx-10 my-5 p-6'>
+                        <h1 className='font-bold text-xl mb-4 text-center'>{name}</h1>
+                        <div className="w-full">
+                            {console.log(image)}
+                            <img className="rounded-lg shadow-lg mx-auto" src={'http://localhost/bakery_topicos/public/storage/' + image} alt="" />
+                        </div>
+                        <p className='text-lg mb-2'><strong>Precio:</strong> $ {price}</p>
+                        <p className='text-lg mb-2'><strong>Tamaño:</strong> {size}</p>
+                        <p className='text-lg mb-2'><strong>Sabor:</strong> {flavors}</p>
+                        <p className='text-lg mb-2'><strong>Stock:</strong> {stock}</p>
+                        <button onClick={ButtonBuy} className="w-full py-3 mt-5 bg-pink-500 hover:bg-pink-600 text-white rounded">Comprar pastel</button>
+                        <button onClick={handleButtonClick} className='w-full py-3 mt-5 bg-gray-300 hover:bg-gray-400 rounded'>Regresar</button>
                     </div>
                 </div>
             </div>

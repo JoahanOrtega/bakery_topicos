@@ -23,12 +23,12 @@ function indexSell() {
                     setUserData(userResponse.data);
                 }
 
-                const carResponse = await axios.get('http://localhost/bakery_topicos/public/api/sells_index', {
+                const cakeResponse = await axios.get('http://localhost/bakery_topicos/public/api/sells_index', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                setSellData(carResponse.data);
+                setSellData(cakeResponse.data);
             } catch (error) {
                 console.log("Error: ", error);
             }
@@ -42,8 +42,8 @@ function indexSell() {
         const userRole = Number(userData.role);
 
         if (userRole === 1) {
-            const filteredCars = sellData.filter(ventaData => ventaData.Id_foreign_key === userId);
-            setFilteredSales(filteredCars);
+            const filteredCakes = sellData.filter(ventaData => ventaData.Id_foreign_key === userId);
+            setFilteredSales(filteredCakes);
         } else if (userRole === 2) {
             setFilteredSales(sellData);
         }
@@ -57,7 +57,7 @@ function indexSell() {
         if (userData.role === 2) {
             return venta.Id_foreign_key.toString().toLowerCase().includes(searchTerm.toLowerCase());
         } else if (userData.role === 1) {
-            return venta.Id_foreign_keycars.toString().toLowerCase().includes(searchTerm.toLowerCase());
+            return venta.Id_foreign_keycakes.toString().toLowerCase().includes(searchTerm.toLowerCase());
         }
         return false;
     });

@@ -58,7 +58,7 @@ function Register() {
 
             }).catch(error => {
                 console.log("Error during registration: ", error);
-                alert("Contraseñas incorrectas, deben de ser iguales y de 8 caracteres como mínimmo ");
+                alert("Error al registrar el usuario");
 
             });
 
@@ -91,10 +91,10 @@ function Register() {
                     <PrimaryButton className="w-full bg-pink-500 hover:bg-pink-600 text-white rounded">Registrarse</PrimaryButton>
 
                     <Link to="/AdRegister">
-                        <PrimaryButton className="bg-pink-500 hover:bg-pink-600 w-full text-white rounded">Ingresar como Administrador</PrimaryButton>
+                        <PrimaryButton className="bg-pink-500 hover:bg-pink-600 w-full text-white rounded">Panel de Administracion</PrimaryButton>
                     </Link>
 
-                    <Link to="/login" className="text-center text-pink-500 hover:text-pink-600">¿Ya tienes cuenta? Inicia sesión aquí</Link>
+                    <Link to="/login" className="text-center text-pink-500 hover:text-pink-600">Inicia sesión</Link>
                 </div>
             </form>
         </div>

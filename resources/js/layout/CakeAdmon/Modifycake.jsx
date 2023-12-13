@@ -27,7 +27,6 @@ const ModifyCake = () => {
         type: cake.type,
         price: cake.price,
         Available: cake.Available,
-        // Image: car.Image
     });
 
 
@@ -87,23 +86,9 @@ const ModifyCake = () => {
                 <div className="flex justify-center items-center">
 
                     <form onSubmit={handleSubmit} style={{ width: '50%', maxWidth: '500px' }} encType="multipart/form-data">
-                        {/*
-                        <div className="mt-4 mb-4">
-                            <InputLabel htmlFor="Id_marca_fk" value="Marca del auto" />
-
-                            <select value={formValue.Id_Brand_fk} onChange={onChange} id="Id_Brand_fk" name="Id_Brand_fk" className="mt-1 block w-full p-2 border border-black">
-                                <option value="0">Selecciona una marca</option>
-                                {brands.map(brand => (
-                                    <option key={brand.id} value={brand.id}>
-                                        {brand.Desc}
-                                    </option>
-                                ))}
-                            </select>
-
-                        </div> */}
 
                         <select value={formValue.Available} onChange={onChange} id="Available" name="Available" className="mt-1 block w-full p-2 border border-black">
-                            <option value="00">Disponibilidad del carro</option>
+                            <option value="00">Disponibilidad del pastel</option>
                             <option value="1">Disponible</option>
                             <option value="0">No disponible</option>
                         </select>
@@ -131,18 +116,6 @@ const ModifyCake = () => {
                             <InputLabel htmlFor="type" value="Tipo de postre" />
                             <TextInput value={formValue.type} onChange={onChange} id="type" type="text" name="type" className="mt-1 block w-full p-2 border border-black" required />
                         </div>
-                        {/* <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="version" value="Versión" />
-                            <TextInput value={formValue.version} onChange={onChange} id="version" type="text" name="version" className="mt-1 block w-full p-2 border border-black" required />
-                        </div>
-                        <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="TM" value="Tipo de transmisión" />
-                            <TextInput value={formValue.TM} onChange={onChange} id="TM" type="text" name="TM" className="mt-1 block w-full p-2 border border-black" required />
-                        </div>
-                        <div className="mt-4 mb-4" >
-                            <InputLabel htmlFor="liters" value="Capacidad de litros" />
-                            <TextInput value={formValue.liters} onChange={onChange} id="liters" type="number" name="liters" className="mt-1 block w-full p-2 border border-black" required />
-                        </div> */}
 
                         <div className="mt-4 mb-4" >
                             <InputLabel htmlFor="price" value="Costo del producto" />

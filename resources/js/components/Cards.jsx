@@ -34,20 +34,18 @@ function Cards(props) {
 
     return (
         <>
-            <div className="mt-5 shadow-md border border-gray-200 rounded-lg max-w-sm bg-white dark:border-gray-700 text-white mx-2">
-                {console.log(Image)};
-                <img className="rounded-t-lg" src={'http://localhost/bakery_topicos/public/storage/' + Image} alt="" />
-                <div className="p-5">
+            <div className="mt-5 shadow-lg border border-gray-300 rounded-xl max-w-sm bg-white dark:border-gray-700 mx-2">
+                <img className="rounded-t-xl" src={'http://localhost/bakery_topicos/public/storage/' + Image} alt="" />
+                <div className="p-6">
                     <a href="#">
-                        <h5 className="text-black font-bold text-2xl tracking-tight">{name}</h5>
+                        <h5 className="text-gray-900 font-semibold text-2xl tracking-tight">{name}</h5>
                     </a>
-
-                    <p className="font-normal text-black mb-3 ">
-                        Precio: {price} $
+                    <p className="font-normal text-gray-800 mb-4">
+                        Precio: $ {price}
                     </p>
-                    <button onClick={handleButtonClick} className="mt-5 text-black font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex border-solid border-2">
-                        Mas informacion
-                        <img src={NextIcon} className="w-6 h-6" alt="" />
+                    <button onClick={handleButtonClick} className="mt-4 text-white font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center justify-center bg-blue-500 hover:bg-blue-600 border-0">
+                        Más información
+                        <img src={NextIcon} className="w-5 h-5 ml-2" alt="" />
                     </button>
                 </div>
             </div>

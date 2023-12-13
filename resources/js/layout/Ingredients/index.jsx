@@ -14,7 +14,6 @@ function IngredientsAdmon() {
         setSearch(e.target.value); // Actualiza el estado del término de búsqueda
     };
 
-    // Filtra los carros basados en el término de búsqueda
     const filteredCakes = cakes.filter(cake =>
         cake.Desc.toLowerCase().includes(search.toLowerCase())
     );
@@ -59,10 +58,10 @@ function IngredientsAdmon() {
                                     <thead className="bg-pink-100">
                                         <tr>
                                             <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-center">
-                                                I D
+                                                ID
                                             </th>
                                             <th scope="col" className="text-sm font-medium text-gray-700 px-6 py-4 text-center">
-                                                M A R C A
+                                                Ingrediente
                                             </th>
                                         </tr>
                                     </thead>

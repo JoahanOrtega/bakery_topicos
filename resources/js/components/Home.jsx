@@ -48,13 +48,6 @@ function Home() {
 
             <div className="flex flex-col my-10 h-screen rounded-lg">
 
-                <div className="w-full ">
-                    <h1 className="text-2xl font-semibold ml-5">Nuestra Pasión por la Repostería</h1>
-                    <p className='mx-5 my-10 text-justify'>
-                        En SweetBakery, los pasteles son nuestra pasión. Cada delicia que llega a nuestra tienda es elaborada con amor y dedicación, garantizando la mejor calidad y sabor. Nuestro compromiso con la excelencia se refleja en cada bocado.
-                    </p>
-                </div>
-
                 <div className="w-full">
                     <img src={image} alt="Cake" className="w-full object-cover transition-opacity duration-500" />
                 </div>
